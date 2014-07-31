@@ -1,4 +1,4 @@
-package wikiParse;
+package net.raehik.wikiquiz;
 
 import simplenlg.framework.*;
 import simplenlg.lexicon.*;

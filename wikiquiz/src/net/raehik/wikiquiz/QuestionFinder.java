@@ -1,4 +1,4 @@
-package wikiParse;
+package net.raehik.wikiquiz;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -17,11 +17,15 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 
 public class QuestionFinder {
+	
+    public void printError(String error, String desc) {
+    	System.out.println(error + " - " + desc);
+    }
+    
 	public String[] sentenceParse(String article){
 		//begin wiki parsing
 		String article_new = article.replaceAll("\n", "");
@@ -169,20 +173,20 @@ public class QuestionFinder {
             }
             is.close();
             json = sb.toString();
-            Log.e("JSON", json);
+            printError("JSON", json);
         } catch (Exception e) {
-            Log.e("Buffer Error", "Error converting result " + e.toString());
+            printError("Buffer Error", "Error converting result " + e.toString());
         }
  
         // try parse the string to a JSON object
         try {
             jObj = new JSONObject(json);            
         } catch (JSONException e) {
-            Log.e("JSON Parser", "Error parsing data " + e.toString());
+            printError("JSON Parser", "Error parsing data " + e.toString());
         }
  
         // return JSON String
-        Log.i("Tag", jObj.toString());
+        printError("Tag", jObj.toString());
         return jObj;
  
     }
