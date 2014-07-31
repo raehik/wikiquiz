@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/json-20140107.jar"/>
 	<classpathentry kind="lib" path="lib/httpclient-4.3.4.jar"/>
 	<classpathentry kind="lib" path="lib/httpcore-4.3.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
