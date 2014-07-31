@@ -66,8 +66,8 @@ public class QuestionFinder {
 				break;
 			}
 		}
-		String wikinoopenbrackets = article_updated.replaceAll("[[", "");
-		String wikinobrackets = wikinoopenbrackets.replaceAll("]]", "");
+		String wikinoopenbrackets = article_updated.replaceAll("\\[\\[", "");
+		String wikinobrackets = wikinoopenbrackets.replaceAll("\\]\\]", "");
 		
 		String article_final;
 		while (true){
@@ -100,14 +100,18 @@ public class QuestionFinder {
 			break;
 		}
 		}
-		
+		String wiki;
 		int noteindex = article_finale.indexOf("==Rel");
-		String wiki = article_finale.substring(noteindex);
+		if (noteindex != -1){
+		wiki = article_finale.substring(noteindex);
+		} else {
+			wiki = article_finale;
+		}
 		String wiki_final = wiki.replaceAll("\u2013", "-");
 		
 		InputStream modelIn = null;
 		try {
-			modelIn = new FileInputStream("en-sent.bin");
+			modelIn = new FileInputStream("/root/workspace/wikiquiz/src/net/raehik/wikiquiz/en-sent.bin");
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
